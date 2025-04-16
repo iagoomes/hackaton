@@ -1,0 +1,57 @@
+version: '3.8'
+services:
+
+  auth-server:
+    build: ./auth-server
+    container_name: auth-server
+    ports:
+      - "8081:8080"
+    environment:
+      - JWT_SECRET=vOb6iPdjdUOxeGd4+Hu/CGUrzmDaC5FFaYYrmZu9kFk=
+    networks:
+      - system-network
+
+  patients-api:
+    build: ./patients-api
+    container_name: patients-api
+    ports:
+      - "8082:8080"
+    environment:
+      - JWT_SECRET=vOb6iPdjdUOxeGd4+Hu/CGUrzmDaC5FFaYYrmZu9kFk=
+    depends_on:
+      - auth-server
+    networks:
+      - system-network
+
+  doctor-api:
+    build: ./doctor
+    container_name: doctor-api
+    ports:
+      - "8083:8080"
+    environment:
+      - JWT_SECRET=vOb6iPdjdUOxeGd4+Hu/CGUrzmDaC5FFaYYrmZu9kFk=
+    depends_on:
+      - auth-server
+    networks:
+      - system-network
+
+  appointments-api:
+    build: ./consulta
+    container_name: appointments-api
+    ports:
+      - "8084:8080"
+    environment:
+      - JWT_SECRET=vOb6iPdjdUOxeGd4+Hu/CGUrzmDaC5FFaYYrmZu9kFk=
+      - AUTH_SERVER_URL=http://auth-server:8080
+      - PATIENTS_API_URL=http://patients-api:8080
+      - DOCTOR_API_URL=http://doctor-api:8080
+    depends_on:
+      - auth-server
+      - patients-api
+      - doctor-api
+    networks:
+      - system-network
+
+networks:
+  system-network:
+    driver: bridge

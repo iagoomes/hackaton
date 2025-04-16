@@ -1,0 +1,12 @@
+[submodule "auth-server"]
+	path = auth-server
+	url = https://github.com/iagoomes/auth-server.git
+[submodule "consulta"]
+	path = consulta
+	url = https://github.com/yago-souza/consulta.git
+[submodule "patients-api"]
+	path = patients-api
+	url = https://github.com/fernandoarag/patients-api.git
+[submodule "doctor"]
+	path = doctor
+	url = https://github.com/iagoomes/doctor.git
