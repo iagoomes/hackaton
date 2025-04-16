@@ -1,0 +1,43 @@
+# Ignorar arquivos do IntelliJ IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Ignorar arquivos de build Java
+**/target/
+**/.classpath
+**/.project
+**/.settings/
+
+# Ignorar arquivos do sistema
+.DS_Store
+Thumbs.db
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos do Maven
+**/dependency-reduced-pom.xml
+**/release.properties
+
+# Ignorar arquivos de ambiente
+.env
+*.env
+
+# Ignorar arquivos do docker-compose (ex: volumes, dados gerados)
+**/data/
+**/tmp/
+**/logs/
+
+# Ignorar configurações específicas do sistema
+*.swp
+*~
+
+# Ignorar arquivos gerados por ferramentas de cobertura de teste
+**/jacoco.exec
+
+# Node (caso algum serviço tenha front-end)
+**/node_modules/
+**/dist/
+
